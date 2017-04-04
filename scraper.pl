@@ -68,6 +68,9 @@ foreach my $doc (@doc) {
 	remove_trailing(\$title);
 	my $link = URI->new($base_uri->scheme.'://'.$base_uri->host.
 		$title_a->attr('href'));
+	if (!$title_h2->find_by_attribute('class', 'date')) {
+		next;
+	}
 	my $date_start = get_db_date_word($title_h2
 		->find_by_attribute('class', 'date')->as_text);
 
